@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #ff4d4d;
+  --secondary-color: #1a1a1a;
+  --background: #ffffff;
+  --text: #1a1a1a;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-white text-[#1a1a1a] overflow-x-hidden;
+  overscroll-behavior-y: none;
+}
+
+.container {
+  @apply max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.heading-xl {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+}
+
+.heading-lg {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+}
+
+.button-primary {
+  @apply bg-[#ff4d4d] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium 
+         hover:bg-opacity-90 transition-all duration-300 active:scale-95 
+         focus:outline-none focus:ring-2 focus:ring-[#ff4d4d] focus:ring-offset-2;
+}
+
+.button-secondary {
+  @apply border-2 border-[#1a1a1a] text-[#1a1a1a] px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium 
+         hover:bg-[#1a1a1a] hover:text-white transition-all duration-300 active:scale-95
+         focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:ring-offset-2;
+}
+
+.nav-link {
+  @apply text-base sm:text-lg font-medium hover:text-[#ff4d4d] transition-colors duration-300
+         relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 
+         after:bg-[#ff4d4d] after:scale-x-0 after:origin-right after:transition-transform
+         hover:after:scale-x-100 hover:after:origin-left;
+}
+
+/* Mobile Menu Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Touch Device Enhancements */
+@media (hover: none) {
+  .button-primary, .button-secondary {
+    @apply transition-none hover:transform-none active:scale-95;
+  }
+
+  .nav-link {
+    @apply after:hidden;
+  }
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+/* Hover Effects */
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Glass Effect */
+.glass {
+  @apply backdrop-blur-lg bg-white/80 supports-[backdrop-filter]:bg-white/20;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3333;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+
+  .section {
+    @apply py-12;
+  }
+
+  .heading-xl, .heading-lg {
+    @apply tracking-tight;
+  }
+
+  /* Disable hover effects on mobile */
+  .hover-scale, .hover-lift {
+    @apply transform-none transition-none;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Enhanced Focus Styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-[#ff4d4d] ring-offset-2;
+}
